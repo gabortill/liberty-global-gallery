@@ -1,0 +1,121 @@
+.gallery {
+    display: inline-block;
+    left: 50%;
+    padding: 0 50px;
+    position: absolute;
+    top: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+
+    &__preloader {
+        display: block;
+        margin: 0 auto;
+    }
+
+    &__btn {
+        background: transparent;
+        border: none;
+        cursor: pointer;
+        height: 100%;
+        padding: 0;
+        position: absolute;
+        top: 0;
+        -webkit-transition: background-color 0.25s linear;
+        transition: background-color 0.25s linear;
+        width: 50px;
+
+        &:focus {
+            outline: none;
+        }
+
+        &:hover {
+            background: $color-arrow-bg;
+            color: $color-arrow-hover;
+
+            &::after,
+            &::before {
+                background: $color-arrow-hover;
+            }
+        }
+
+        &--next {
+            right: 0;
+        }
+
+        &--prev {
+            left: 0;
+        }
+
+        &--next::after,
+        &--next::before,
+        &--prev::after,
+        &--prev::before {
+            background: $color-arrow;
+            content: '';
+            height: 1px;
+            position: absolute;
+            width: 30px;
+        }
+
+        &--next::after,
+        &--next::before {
+            right: 13px;
+            -webkit-transform-origin: 100% 0;
+            transform-origin: 100% 0;
+        }
+
+        &--next::after {
+            -webkit-transform: rotate(55deg);
+            transform: rotate(55deg);
+        }
+
+        &--next::before {
+            -webkit-transform: rotate(-55deg);
+            transform: rotate(-55deg);
+        }
+
+        &--prev::after,
+        &--prev::before {
+            left: 13px;
+            -webkit-transform-origin: 0 100%;
+            transform-origin: 0 100%;
+        }
+
+        &--prev::after {
+            -webkit-transform: rotate(55deg);
+            transform: rotate(55deg);
+        }
+
+        &--prev::before {
+            -webkit-transform: rotate(-55deg);
+            transform: rotate(-55deg);
+        }
+    }
+
+    &__display {
+        min-width: 600px;
+        overflow: hidden;
+
+        &__moving {
+            -webkit-transition: transform 0.5s ease-out;
+            transition: transform 0.5s ease-out;
+
+            &::after {
+                clear: both;
+                content:'';
+                display: block;
+            }
+        }
+    }
+
+    &__item {
+        background: #fff;
+        float: left;
+        margin: 0 7px;
+        width: 186px;
+
+        &__caption {
+            padding: 5px;
+        }
+    }
+}
